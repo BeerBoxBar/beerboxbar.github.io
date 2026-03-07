@@ -183,6 +183,39 @@ header {
 .hero.hero--photo .actions a.secondary:hover {
   background: rgba(0,0,0,0.48);
 }
+ /* ===== Bookings section logo (bottom-right) ===== */
+.bookings__inner{
+  position: relative;
+  padding-right: 120px; /* creates room so text doesn't collide with logo */
+}
+
+.bookings__logo{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 96px;         /* adjust to taste */
+  height: 96px;
+  color: #000;         /* black logo */
+  opacity: 0.95;
+}
+
+.bookings__logo svg{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Mobile: keep it tidy and not too dominant */
+@media (max-width: 640px){
+  .bookings__inner{ padding-right: 0; padding-bottom: 110px; }
+  .bookings__logo{
+    right: 0;
+    bottom: 0;
+    width: 82px;
+    height: 82px;
+    opacity: 0.9;
+  }
+}
   </style>
 </head>
 
