@@ -32,7 +32,7 @@ header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 76px;
+      height: 92px;
       gap: 16px;
     }
 
@@ -49,8 +49,16 @@ header {
       max-width: 100%;
     }
 
-    .logo-wide svg { width: 240px; }
-    .logo-square svg { width: 46px; height: 46px; }
+
+.logo-wide svg {
+  width: clamp(220px, 22vw, 340px); /* responsive: grows on large screens */
+}
+
+.logo-square svg {
+  width: 68px;
+  height: 68px;
+}
+
 
     @media (max-width: 640px) {
       .logo-wide { display: none; }
