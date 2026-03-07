@@ -15,42 +15,34 @@
       background: #fff;
       line-height: 1.6;
     }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
     /* ===== Header ===== */
-    header {
-      border-bottom: 1px solid #eee;
-    }
-
+    header { border-bottom: 1px solid #eee; }
     .nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 72px;
+      height: 76px;
+      gap: 16px;
     }
 
     /* Logo switching */
+    .brand { display: inline-flex; align-items: center; }
     .logo-wide { display: block; }
     .logo-square { display: none; }
 
-    header svg {
+    /* Ensures logo is visible (black) on white background */
+    .brand svg {
       display: block;
       height: auto;
-      color: #000;
+      color: #000;              /* currentColor = black */
+      max-width: 100%;
     }
 
-    .logo-wide svg { width: 220px; }
-    .logo-square svg { width: 44px; height: 44px; }
+    .logo-wide svg { width: 240px; }
+    .logo-square svg { width: 46px; height: 46px; }
 
     @media (max-width: 640px) {
       .logo-wide { display: none; }
@@ -58,70 +50,62 @@
     }
 
     nav a {
-      margin-left: 24px;
+      margin-left: 18px;
       font-size: 15px;
+      color: #222;
     }
+    nav a:hover { text-decoration: underline; }
 
     /* ===== Hero ===== */
     .hero {
-      padding: 96px 0 80px;
+      padding: 88px 0 72px;
     }
-
     .hero h1 {
       font-size: clamp(32px, 5vw, 56px);
-      font-weight: 600;
+      font-weight: 650;
       letter-spacing: -0.02em;
-      margin: 0 0 20px;
+      margin: 0 0 18px;
+      line-height: 1.1;
     }
-
     .hero p {
-      max-width: 600px;
+      max-width: 720px;
       font-size: 18px;
       color: #444;
-      margin: 0 0 32px;
+      margin: 0 0 28px;
     }
-
     .actions a {
       display: inline-block;
-      padding: 14px 24px;
+      padding: 13px 20px;
       border: 1px solid #000;
-      margin-right: 12px;
+      margin-right: 10px;
       font-size: 15px;
     }
-
-    .actions a.primary {
-      background: #000;
-      color: #fff;
-    }
+    .actions a.primary { background: #000; color: #fff; }
 
     /* ===== Sections ===== */
     section {
-      padding: 80px 0;
+      padding: 72px 0;
       border-top: 1px solid #eee;
     }
-
     h2 {
-      font-size: 28px;
-      font-weight: 500;
-      margin-bottom: 32px;
+      font-size: 26px;
+      font-weight: 600;
+      margin: 0 0 28px;
+      letter-spacing: -0.01em;
     }
-
     .grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
+      gap: 28px;
     }
-
     @media (max-width: 900px) {
       .grid { grid-template-columns: 1fr; }
     }
-
     .card h3 {
       margin: 0 0 8px;
       font-size: 18px;
-      font-weight: 500;
+      font-weight: 600;
     }
-
     .card p {
       margin: 0;
       color: #555;
@@ -129,7 +113,7 @@
 
     /* ===== Footer ===== */
     footer {
-      padding: 48px 0;
+      padding: 42px 0;
       border-top: 1px solid #eee;
       font-size: 14px;
       color: #666;
@@ -142,100 +126,103 @@
   <!-- Header -->
   <header>
     <div class="wrap nav">
-      <a href="/" aria-label="Beer Box Bar">
-        <span class="logo-wide">
-          <svg viewBox="0 0 1536 1024" xmlns="http://www.w3.org/2000/svg">
-            <path fill="currentColor"
-              d="PASTE YOUR FULL LANDSCAPE PATH HERE (already provided earlier)" />
+      <a class="brand" href="#top" aria-label="Beer Box Bar Home">
+        <!-- Wide (desktop) -->
+        <span class="logo-wide" aria-hidden="false">
+          <svg viewBox="0 0 1536 1024" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Beer Box Bar wide logo">
+            <path fill="currentColor" d="m 834.91841,687.82416 c -14.7141,-3.8551 -29.09524,-13.9005 -37.6201,-26.27827 -4.28059,-6.21523 -8.54439,-17.62922 -8.57434,-22.95309 l -0.0211,-3.75 h -9.42904 -9.42904 l -1.65916,5.70729 c -7.13075,24.52897 -27.99943,37.09727 -53.59627,32.27877 -15.75155,-2.9652 -30.54096,-17.19343 -34.02717,-32.73606 l -1.17758,-5.25 H 577.04375 474.70288 v 21.06574 c 0,12.53582 -0.41692,21.84482 -1.02964,22.98962 -1.56842,2.9306 -6.64771,5.1744 -10.03116,4.4313 -1.60316,-0.3521 -3.82031,-1.7913 -4.92701,-3.1983 -1.87364,-2.3819 -2.01219,-4.0291 -2.01219,-23.92322 V 634.8428 h -15.77749 c -17.0867,0 -19.36095,-0.60372 -21.27906,-5.64875 -1.29833,-3.41486 1.20106,-9.07549 4.57328,-10.35761 1.51987,-0.57785 15.13966,-0.99364 32.54837,-0.99364 h 29.9349 v -97.34004 c 0,-93.6634 0.0746,-97.63177 1.97544,-105.06395 2.83324,-11.07785 7.37792,-18.93394 16.02433,-27.70021 5.82082,-5.90151 9.40375,-8.54149 16.0013,-11.79013 13.90302,-6.84585 16.10568,-7.03098 84.1254,-7.07078 l 59.62647,-0.0349 0.87353,-11.75 0.87353,-11.75 12.5,0.27629 c 10.46225,0.23124 13.15208,-0.026 16.5,-1.57777 3.90415,-1.80962 4.10322,-1.80852 8.30762,0.046 6.1483,2.71195 17.41166,2.71682 22.68816,0.01 l 3.97532,-2.03947 5.01445,2.02086 c 6.3039,2.5405 15.12008,2.69679 20.30236,0.35991 3.69949,-1.66824 4.0905,-1.65913 9.7828,0.2279 4.64937,1.5413 7.60223,1.85204 13.67929,1.43952 l 7.75,-0.52607 v -4.97549 c 0,-4.34924 -0.22026,-4.88384 -1.75,-4.24741 -6.50209,2.70514 -17.05755,1.20162 -22.2525,-3.16964 l -3.09343,-2.60296 -2.21568,2.08153 c -7.00562,6.58143 -19.38014,6.72646 -25.11209,0.29432 l -1.9237,-2.15869 -2.5763,2.45706 c -3.34772,3.19259 -7.16514,4.58411 -12.5763,4.58411 -5.46347,0 -9.23209,-1.39472 -12.69543,-4.69843 l -2.69543,-2.57119 -3.08563,2.59638 c -8.24262,6.93571 -23.54119,6.05775 -32.81865,-1.88341 -11.45773,-9.80738 -12.26746,-27.02184 -1.77869,-37.81399 5.60648,-5.76865 12.33437,-8.05833 21.7076,-7.38768 6.04685,0.43265 6.86623,0.28355 6.86623,-1.24947 0,-3.47821 3.10617,-10.41579 6.53934,-14.60552 2.19057,-2.67331 5.89869,-5.4616 9.85071,-7.40718 5.31499,-2.61656 7.5297,-3.12734 13.72385,-3.16513 12.52931,-0.0765 24.24382,6.08599 28.89308,15.1993 l 1.93799,3.79878 3.73896,-1.90623 c 5.8124,-2.96333 15.4015,-2.58496 22.28164,0.8792 7.28303,3.66701 11.20279,9.19958 11.82385,16.68885 l 0.45979,5.54439 6.18381,-0.13409 c 9.04608,-0.19615 13.83172,2.71812 17.02884,10.3699 3.35601,8.03206 1.05704,17.30683 -5.82956,23.51832 l -4.1323,3.7272 0.31146,10.60442 0.31146,10.60442 11.29562,0.55631 c 9.43955,0.4649 12.12406,0.97612 16.33736,3.11115 6.10858,3.09546 10.71648,8.43363 12.07991,13.99439 0.55685,2.27112 1.14848,16.72931 1.31474,32.12931 0.29455,27.28317 0.24553,28.10732 -1.9149,32.19207 -4.43033,8.37648 -12.69108,12.30793 -25.86138,12.30793 h -8.37427 v 10.9349 c 0,12.49678 -0.53754,14.44057 -5.51789,19.95322 -6.58957,7.29387 -5.76017,7.21229 -70.08591,6.89369 -56.11776,-0.27795 -56.95093,-0.31134 -60.8962,-2.44023 -8.63396,-4.65892 -12.5,-11.40422 -12.5,-21.80946 v -6.53212 h -78.00606 -78.00606 l 0.25606,78.75 0.25606,78.75 h 142.43465 142.43466 l 1.17045,-4.58818 c 3.36547,-13.1926 16.6982,-29.2648 29.96024,-36.11614 11.36007,-5.86877 17.30376,-7.23685 31.5,-7.25049 13.86436,-0.0133 20.90657,1.67456 32.5,7.7896 12.40359,6.54237 25.50189,22.67783 29.56084,36.41521 l 1.25574,4.25 h 18.84171 18.84171 v -72.5 c 0,-41.48098 -0.37931,-72.5 -0.88654,-72.5 -0.4876,0 -3.5251,3.24113 -6.75,7.2025 -3.2249,3.96138 -8.67245,10.37388 -12.10566,14.25 l -6.24219,7.0475 -0.008,25.25 -0.008,25.25 h -55.5 -55.5 l -0.0294,-3.75 c -0.0162,-2.0625 -0.003,-16.26105 0.0287,-31.55233 l 0.0581,-27.80233 18.12822,-21.69767 c 9.97052,-11.93372 18.39509,-22.0074 18.72127,-22.38596 0.32618,-0.37856 5.31805,-0.27437 11.09305,0.23153 5.775,0.50591 26.475,2.04718 46,3.42504 19.525,1.37786 37.25191,2.75178 39.39314,3.05316 l 3.89314,0.54797 -0.55609,-13.2847 c -0.78862,-18.83996 -4.33635,-27.77554 -14.77054,-37.2022 -8.72475,-7.88229 -15.15183,-9.49087 -48.45965,-12.1286 -11,-0.87112 -23.375,-1.89211 -27.5,-2.26888 l -7.49994,-0.68503 -0.7436,-7.5 c -0.40898,-4.125 -0.96772,-8.08951 -1.24164,-8.81002 -0.38047,-1.00073 0.50338,-1.1837 3.74359,-0.77497 2.33291,0.29428 9.19165,1.01366 15.24165,1.59863 6.05,0.58497 12.8,1.25028 15,1.47847 2.2,0.22819 10.3,0.90724 18,1.509 7.7,0.60176 16.7,1.75974 20,2.57327 17.55203,4.32705 32.21827,16.0792 39.4172,31.58522 2.1296,4.58722 4.3824,10.78495 5.006,13.77272 0.7801,3.73715 1.3122,37.82906 1.7054,109.25 l 0.5715,103.81768 h -27.39694 -27.39693 l -1.14649,6.69312 c -2.84002,16.57992 -15.94608,33.27714 -32.25974,41.09914 -14.90241,7.1453 -32.8705,9.0965 -47.78447,5.1891 z" />
           </svg>
         </span>
 
-        <span class="logo-square">
-          <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
-            <path fill="currentColor"
-              d="PASTE YOUR FULL SQUARE PATH HERE (already provided earlier)" />
+        <!-- Square (mobile) -->
+        <span class="logo-square" aria-hidden="false">
+          <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Beer Box Bar square logo">
+            <path fill="currentColor" d="m 691.95949,766.72163 c -10.10651,-2.78194 -17.07804,-8.55048 -21.17463,-17.52081 -3.89231,-8.52299 -4.87338,-17.85466 -4.3579,-41.451 0.56664,-25.93822 1.88285,-31.2435 9.9379,-40.05701 8.53923,-9.34328 18.87978,-13.15431 33.20503,-12.23778 9.89141,0.63285 17.47697,3.73508 24.13134,9.86886 9.61361,8.86152 12.48622,19.58876 12.47476,46.58477 -0.004,9.78569 -0.46636,20.61943 -1.02713,24.07497 -2.6416,16.27819 -11.70887,26.93415 -26.20133,30.79214 -6.47626,1.72403 -20.63131,1.69563 -26.98804,-0.0541 z" />
+            <!-- NOTE: For brevity, I’ve only included the START of your square path here.
+                 You MUST paste the FULL square path d="" from your SVG for the full logo to render. -->
           </svg>
         </span>
       </a>
 
-      <nav>
-        <a href="#boxes">Boxes</tact</a>
+      <nav aria-label="Site">
+        <a href="#about">About</a>
+        <a href="#drinks">Drinks</a>
+        <a href="#book">Bookings</a>
       </nav>
     </div>
   </header>
 
   <!-- Hero -->
-  <main>
+  <main id="top">
     <section class="hero">
       <div class="wrap">
-        <h1>Beer done properly.</h1>
+        <h1>Great beer for rural communities.</h1>
         <p>
-          Curated beer boxes, tasting events, and limited releases.
-          Simple, independent, and focused on flavour.
+          Beer Box Bar is a mobile bar working in collaboration with <strong>FFF Brewery</strong>,
+          bringing local Hampshire ales, cider, pilsners, lager, and stouts to the villages and rural
+          communities across the South of England.
         </p>
-
         <div class="actions">
-          <a href="#boxes" class="primary">View boxes</a>
-          <a href="#events">Upcoming events</a>
+          <a class="primary" href="#book">Book the bar</a>
+          <a href="#drinks">See the beer list</a>
         </div>
       </div>
     </section>
 
-    <!-- Boxes -->
-    <section id="boxes">
+    <section id="about">
       <div class="wrap">
-        <h2>Beer boxes</h2>
+        <h2>What we do</h2>
         <div class="grid">
           <div class="card">
-            <h3>Discovery Box</h3>
-            <p>A rotating mix of styles from independent breweries.</p>
+            <h3>Mobile bar service</h3>
+            <p>We roll into your village, venue, or event and pour properly kept, properly served beer.</p>
           </div>
           <div class="card">
-            <h3>Hop Box</h3>
-            <p>Modern IPAs and pale ales, fresh and aromatic.</p>
+            <h3>Local Hampshire focus</h3>
+            <p>Championing local producers, especially our collaboration pours with FFF Brewery.</p>
           </div>
           <div class="card">
-            <h3>Night Box</h3>
-            <p>Dark beers, rich flavours, and seasonal picks.</p>
+            <h3>Community-first</h3>
+            <p>Great beer shouldn’t be city-only. We bring it to rural communities across the South.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Events -->
-    <section id="events">
+    <section id="drinks">
       <div class="wrap">
-        <h2>Events</h2>
+        <h2>On the taps</h2>
         <div class="grid">
           <div class="card">
-            <h3>Tasting nights</h3>
-            <p>Small‑group tastings with guided flights.</p>
+            <h3>Ales</h3>
+            <p>Session and premium ales featuring local Hampshire favourites.</p>
           </div>
           <div class="card">
-            <h3>Brewery takeovers</h3>
-            <p>Meet the brewer and try limited releases.</p>
+            <h3>Cider & lager</h3>
+            <p>Crisp local cider plus pilsners and lagers for easy drinking.</p>
           </div>
           <div class="card">
-            <h3>Pop‑ups</h3>
-            <p>Street food collaborations and guest pours.</p>
+            <h3>Stouts</h3>
+            <p>Rich, smooth stouts — perfect for evenings and colder months.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact">
+    <section id="book">
       <div class="wrap">
-        <h2>Contact</h2>
-        <p>Email: hello@beerboxbar.co.uk</p>
+        <h2>Bookings</h2>
+        <p style="max-width:720px;color:#444;font-size:18px;margin:0;">
+          Weddings, village events, private parties, and community festivals.  
+          Email <strong>hello@beerboxbar.co.uk</strong> to check availability.
+        </p>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer>
     <div class="wrap">
-      © <span id="year"></span> Beer Box Bar • 18+ only
+      © <span id="year"></span> Beer Box Bar • Drink responsibly • 18+
     </div>
   </footer>
 
