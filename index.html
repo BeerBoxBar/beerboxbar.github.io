@@ -129,7 +129,8 @@ header {
 /* ===== Hero with background photo ===== */
 .hero.hero--photo {
   position: relative;
-  padding: 96px 0 84px;
+  padding: 120px 0 120px;
+  min-height: 70vh;
 
   background-image:
     linear-gradient(rgba(0,0,0,0.60), rgba(0,0,0,0.55)),
@@ -142,21 +143,37 @@ header {
   background-repeat: no-repeat;
 }
 
-@supports not (background-image: image-set(url("x.webp") 1x)) {
+@media (max-width: 640px) {
   .hero.hero--photo {
-    background-image:
-      linear-gradient(rgba(0,0,0,0.60), rgba(0,0,0,0.55)),
-      url("assets/images/about-bg-1920x1080.png");
+    min-height: 62vh;
+    padding: 96px 0 96px;
   }
 }
 
 .hero.hero--photo h1,
-.hero.hero--photo p {
+.hero.hero--photo p { color: #fff; }
+.hero.hero--photo p { color: rgba(255,255,255,0.88); }
+
+/* Buttons */
+.hero.hero--photo .actions a {
+  display: inline-block;
+  padding: 13px 20px;
+  border: 1px solid rgba(255,255,255,0.85);
   color: #fff;
 }
 
-.hero.hero--photo p {
-  color: rgba(255,255,255,0.88);
+.hero.hero--photo .actions a.primary {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+.hero.hero--photo .actions a.secondary {
+  background: rgba(0,0,0,0.35);
+  border-color: rgba(255,255,255,0.65);
+}
+.hero.hero--photo .actions a.secondary:hover {
+  background: rgba(0,0,0,0.48);
 }
   </style>
 </head>
@@ -206,10 +223,12 @@ header {
           communities across the South of England.
         </p>
       
-   <div class="actions">
-      <a class="primary" href="#book">Book the bar</a>
-      <a href="#drinks">See the beer list</a>
-    </div>
+
+<div class="actions">
+  <a class="primary" href="#book">Book the bar</a>
+  <a class="secondary" href="#drinks">Show me the beer</a>
+</div>
+
   </div>
 </section>
 
