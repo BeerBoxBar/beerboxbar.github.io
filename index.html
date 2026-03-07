@@ -19,7 +19,15 @@
     .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
     /* ===== Header ===== */
-    header { border-bottom: 1px solid #eee; }
+   
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
     .nav {
       display: flex;
       align-items: center;
