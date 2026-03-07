@@ -126,6 +126,38 @@ header {
       font-size: 14px;
       color: #666;
     }
+/* ===== Hero with background photo ===== */
+.hero.hero--photo {
+  position: relative;
+  padding: 96px 0 84px;
+
+  background-image:
+    linear-gradient(rgba(0,0,0,0.60), rgba(0,0,0,0.55)),
+    image-set(
+      url("assets/images/about-bg-960x540.webp") 1x,
+      url("assets/images/about-bg-1920x1080.webp") 2x
+    );
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@supports not (background-image: image-set(url("x.webp") 1x)) {
+  .hero.hero--photo {
+    background-image:
+      linear-gradient(rgba(0,0,0,0.60), rgba(0,0,0,0.55)),
+      url("assets/images/about-bg-1920x1080.png");
+  }
+}
+
+.hero.hero--photo h1,
+.hero.hero--photo p {
+  color: #fff;
+}
+
+.hero.hero--photo p {
+  color: rgba(255,255,255,0.88);
+}
   </style>
 </head>
 
@@ -163,20 +195,24 @@ header {
 
   <!-- Hero -->
   <main id="top">
-    <section class="hero">
-      <div class="wrap">
+
+<section class="hero hero--photo" id="hero">
+  <div class="wrap hero__inner">
+
         <h1>Great beer for local communities.</h1>
         <p>
           Beer Box is a mobile bar working in collaboration with <strong><a href="https://triplefff.com/" target="_blank">FFF Brewery</a></strong>,
           bringing local Hampshire ales, cider, pilsners, lager, and stouts to the villages and 
           communities across the South of England.
         </p>
-        <div class="actions">
-          <a class="primary" href="#book">Book the bar</a>
-          <a href="#drinks">See the beer list</a>
-        </div>
-      </div>
-    </section>
+      
+   <div class="actions">
+      <a class="primary" href="#book">Book the bar</a>
+      <a href="#drinks">See the beer list</a>
+    </div>
+  </div>
+</section>
+
 
     <section id="about">
       <div class="wrap">
