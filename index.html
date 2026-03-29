@@ -2,12 +2,257 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Beer Box Bar | Mobile Bar</title>
+  <title>Beer Box</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta name="description" content="Beer Box Bar - premium mobile bar hire for fetes, parties, weddings, festivals and private events. Based in Hampshire , Surrey , Sussex.">
+  <style>
+    /* ===== Base ===== */
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: #111;
+      background: #fff;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
-  <link rel="stylesheet" href="css/styles.css">
+    /* ===== Header ===== */
+   
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 92px;
+      gap: 16px;
+    }
+
+    /* Logo switching */
+    .brand { display: inline-flex; align-items: center; }
+    .logo-wide { display: block; }
+    .logo-square { display: none; }
+
+    /* Ensures logo is visible (black) on white background */
+    .brand svg {
+      display: block;
+      height: auto;
+      color: #000;              /* currentColor = black */
+      max-width: 100%;
+    }
+
+
+.logo-wide svg {
+  width: clamp(220px, 22vw, 340px); /* responsive: grows on large screens */
+}
+
+.logo-square svg {
+  width: 82px;
+  height: 82px;
+}
+
+
+    @media (max-width: 640px) {
+      .logo-wide { display: none; }
+      .logo-square { display: block; }
+    }
+
+    nav a {
+      margin-left: 18px;
+      font-size: 15px;
+      color: #222;
+    }
+    nav a:hover { text-decoration: underline; }
+
+    /* ===== Hero ===== */
+    .hero {
+      padding: 88px 0 72px;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 650;
+      letter-spacing: -0.02em;
+      margin: 0 0 18px;
+      line-height: 1.1;
+    }
+    .hero p {
+      max-width: 720px;
+      font-size: 18px;
+      color: #444;
+      margin: 0 0 28px;
+    }
+    .actions a {
+      display: inline-block;
+      padding: 13px 20px;
+      border: 1px solid #000;
+      margin-right: 10px;
+      font-size: 15px;
+    }
+    .actions a.primary { background: #000; color: #fff; }
+
+    /* ===== Sections ===== */
+    section {
+      padding: 72px 0;
+      border-top: 1px solid #eee;
+    }
+    h2 {
+      font-size: 26px;
+      font-weight: 600;
+      margin: 0 0 28px;
+      letter-spacing: -0.01em;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .card p {
+      margin: 0;
+      color: #555;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      padding: 42px 0;
+      border-top: 1px solid #eee;
+      font-size: 14px;
+      color: #666;
+    }
+/* ===== Hero with background photo ===== */
+.hero.hero--photo {
+  position: relative;
+  padding: 120px 0 120px;
+  min-height: 70vh;
+
+  background-image:
+    linear-gradient(rgba(0,0,0,0.60), rgba(0,0,0,0.55)),
+    image-set(
+      url("assets/images/about-bg-960x540.webp") 1x,
+      url("assets/images/about-bg-1920x1080.webp") 2x
+    );
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 640px) {
+  .hero.hero--photo {
+    min-height: 62vh;
+    padding: 96px 0 96px;
+  }
+}
+
+.hero.hero--photo h1,
+.hero.hero--photo p { color: #fff; }
+.hero.hero--photo p { color: rgba(255,255,255,0.88); }
+
+/* Buttons */
+.hero.hero--photo .actions a {
+  display: inline-block;
+  padding: 13px 20px;
+  border: 1px solid rgba(255,255,255,0.85);
+  color: #fff;
+}
+
+.hero.hero--photo .actions a.primary {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+.hero.hero--photo .actions a.secondary {
+  background: rgba(0,0,0,0.35);
+  border-color: rgba(255,255,255,0.65);
+}
+.hero.hero--photo .actions a.secondary:hover {
+  background: rgba(0,0,0,0.48);
+}
+ /* ===== Bookings section logo (bottom-right) ===== */
+.bookings__inner{
+  position: relative;
+  padding-right: 120px; /* creates room so text doesn't collide with logo */
+}
+
+.bookings__logo{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 96px;         /* adjust to taste */
+  height: 96px;
+  color: #000;         /* black logo */
+  opacity: 0.95;
+}
+
+.bookings__logo svg{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Mobile: keep it tidy and not too dominant */
+@media (max-width: 640px){
+  .bookings__inner{ padding-right: 0; padding-bottom: 110px; }
+  .bookings__logo{
+    right: 0;
+    bottom: 0;
+    width: 82px;
+    height: 82px;
+    opacity: 0.9;
+  }
+}
+/* ===== Availability calendar ===== */
+.calendar-section {
+  padding: 72px 0;
+  border-top: 1px solid #eee;
+}
+
+.calendar-intro {
+  max-width: 720px;
+  font-size: 17px;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.calendar-embed {
+  border: 1px solid #eee;
+}
+
+.calendar-embed iframe {
+  width: 100%;
+  height: 820px;
+  border: 0;
+}
+
+.calendar-note {
+  max-width: 720px;
+  margin-top: 16px;
+  color: #555;
+  font-size: 15px;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .calendar-embed iframe {
+    height: 560px;
+  }
+}
+  </style>
 </head>
 
 <body>
